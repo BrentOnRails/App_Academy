@@ -1,0 +1,22 @@
+<h1><%= "Cat ##{@cat.id}"%> </h1>
+<ul>
+  <table cellpadding="10", cellspacing= "10", frame="border", rules="all">
+    <tr>
+      <%  @cat.attributes.keys.each do |key| %>
+      <th><%= key %></th>
+      <% end %>
+    </tr>
+
+    <tr>
+      <%  @cat.attributes.values.each do |val| %>
+      <td><%= val %></td>
+      <% end %>
+
+    </tr>
+
+  </table>
+</ul>
+
+<%= link_to "Create new cat!", new_cat_url %>
+<br>
+<%= link_to "Edit cat", edit_cat_url(@cat)%>

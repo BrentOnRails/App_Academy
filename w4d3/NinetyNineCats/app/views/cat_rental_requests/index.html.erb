@@ -1,0 +1,9 @@
+<h1>All your cats</h1>
+<ul>
+  <% @requests.each do |request| %>
+  <li><%= request.inspect %> <%= link_to "request", cat_rental_request_url(request) %> </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create new cat rental request!!", new_cat_rental_request_url %>
+

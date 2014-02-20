@@ -1,0 +1,8 @@
+<h2>Cat form!</h2>
+
+
+
+<%= @cat.errors.full_messages.each {|error| error unless error.empty? } unless @cat.errors.empty? %>
+
+<%= render :partial => "layouts/form" %>
+

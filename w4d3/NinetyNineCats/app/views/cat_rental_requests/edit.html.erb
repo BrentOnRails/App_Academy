@@ -1,0 +1,7 @@
+<h2>Edit Request!</h2>
+
+<%= @request.errors.full_messages.each {|error| error unless error.empty? } unless @request.errors.empty? %>
+
+<%= render :partial => "layouts/request_form" %>
+
+

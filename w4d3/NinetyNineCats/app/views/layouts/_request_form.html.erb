@@ -1,0 +1,34 @@
+<form action="<%= @request.persisted? ? cat_rental_request_url(@request) : cat_rental_requests_url %>" method="post">
+
+  <% if @request.persisted? %>
+  <input type = "hidden" name="_method" value ="patch">
+  <% end %>
+
+
+  <label for="request_cat_name">Requested Cat Name</label>
+  <!-- dropdown -->
+  <select name="request[cat_id]" id ="request_cat_name">
+    <!-- `brown` is the value that will be submitted to the server; user is
+         displayed "Brown" as the choice -->
+      <% Cat.all.each do |cat| %>
+      <option value = "<%= cat.id %>"><%= cat.name %> </option>
+      <% end %>
+
+  </select>
+  <br>
+
+
+
+
+  <label for="request_start_date">Start Date</label>
+  <!-- click on the date will launch a date picker -->
+  <input name="request[start_date]" id="request_start_date" type="date"
+  value=<%= @request.start_date %>></input>
+
+  <label for="request_end_date">End Date</label>
+  <!-- click on the date will launch a date picker -->
+  <input name="request[end_date]" id="request_end_date" type="date"
+  value=<%= @request.start_date %>></input>
+  <hr>
+   <input type="submit" value="I can has cat??!">
+</form>

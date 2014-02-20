@@ -1,0 +1,28 @@
+<h1><%= "Request##{@request.id}"%> </h1>
+<ul>
+  <table cellpadding="10", cellspacing= "10", frame="border", rules="all">
+
+
+    <tr>
+       <th> Cat Name </th>
+      <%  @request.attributes.keys.each do |key| %>
+      <th><%= key %></th>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td> <%= Cat.find(@request.cat_id).name %> </td>
+      <%  @request.attributes.values.each do |val| %>
+      <td><%= val %></td>
+      <% end %>
+
+    </tr>
+
+
+
+  </table>
+</ul>
+
+<%= link_to "GET A CAT!", new_cat_rental_request_url %>
+<br>
+<%= link_to "Edit your REQUEST", edit_cat_rental_request_url(@request)%>

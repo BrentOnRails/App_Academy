@@ -1,0 +1,72 @@
+<form action="<%= @cat.persisted? ? cat_url(@cat) : cats_url %>" method="post">
+
+  <% if @cat.persisted? %>
+  <input type = "hidden" name="_method" value ="patch">
+  <% end %>
+
+  <label for="cat_age">Age</label>
+  <input name="cat[age]" id="cat_age" type="number" value=<%= @cat.age %>>
+  <br>
+
+
+  <label for="cat_birth_date">Birth date</label>
+  <!-- click on the date will launch a date picker -->
+  <input name="cat[birth_date]" id="cat_birth_date" type="date"
+  value=<%= @cat.birth_date %>></input>
+
+  <br>
+
+  <label for="cat_color">Cat color</label>
+  <!-- dropdown -->
+  <select name="cat[color]">
+    <!-- `brown` is the value that will be submitted to the server; user is
+         displayed "Brown" as the choice -->
+
+      <% ([""] + Cat::COLORS).each do |color| %>
+
+      <% if @cat.color == color%>
+          <option value = <%= color %> selected = "selected"> <%= color%> </option>
+      <% else %>
+          <option value = <%= color %>> <%= color %> </option>
+        <% end %>
+      <% end %>
+
+      <!--% if @cat.nil? %-->
+        <!--option selected="selected" value="%<= @cat.color %>"> <%= @cat.color %> </option-->
+      <!--% end%-->
+
+
+
+  </select>
+  <br>
+
+ <label for="cat_name"> Name</label>
+
+  <input name="cat[name]" id="cat_name" type="text" value=<%= @cat.name %> >
+  <br>
+
+  <label>Sex</label>
+  <div>
+    <!-- note that both radio buttons have the name `cat[sex]`; that's how
+         they are related -->
+
+
+      <% ["M", "F"].each do |sex| %>
+      <% if @cat.sex == sex%>
+      <input name="cat[sex]" id="cat_sex_<%= sex %>"
+            type="radio" value= <%= sex %>   checked>
+      <label for="cat_sex_<%=sex%>"><%= sex %></label>
+      <% else %>
+      <input name="cat[sex]" id="cat_sex_<%= sex %>"
+             type="radio" value= <%= sex %>>
+      <label for="cat_sex_<%=sex%>"><%= sex %></label>
+        <% end %>
+      <% end %>
+
+  </div>
+  <br>
+
+
+   <input type="submit" value="Build my cat!">
+
+ </form>
