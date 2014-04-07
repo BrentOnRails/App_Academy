@@ -6,6 +6,7 @@ CREATE TABLE cats (
   FOREIGN KEY(owner_id) REFERENCES human(id)
 );
 
+
 CREATE TABLE humans (
   id INTEGER PRIMARY KEY,
   fname VARCHAR(255) NOT NULL,
